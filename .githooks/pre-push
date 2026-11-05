@@ -1,0 +1,10 @@
+#!/bin/sh
+# Local pre-push hook: refuse to push unless unit tests pass.
+# Installed via: git config core.hooksPath .githooks
+# Bypass when needed:  git push --no-verify
+export JAVA_HOME="${JAVA_HOME:-/tmp/opencode/jdk-21.0.13+9}"
+if [ ! -x "$JAVA_HOME/bin/javac" ]; then
+  echo "pre-push: no usable JDK at \$JAVA_HOME (see AGENTS.md JDK quirk) — set JAVA_HOME to a full JDK 17-21."
+  exit 1
+fi
+./gradlew testDebugUnitTest --console=plain || exit 1
