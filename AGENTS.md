@@ -47,6 +47,12 @@ export JAVA_HOME=/path/to/full-jdk-17-21   # see quirk below
 - `material-icons-extended` was added because core Compose icons are missing many symbols (`Event`, `Checklist`, `ViewWeek`); it inflates the debug APK (~16 MB) — R8-in release builds prunes unused icons.
 - Gradle wrapper distribution 8.10.2 + AGP 8.7.3 + Kotlin 2.0.21 + compileSdk/targetSdk 35, minSdk 26 (chosen for notification channels + Compose support; documented as decision #2 in the spec).
 
+## Git workflow (decided 2026-11-05)
+
+- **Branch model:** `feature/<us-x-y-slug>` branches off **`dev`**; merge back with `git merge --no-ff`. `fix/<slug>` for bugfix branches, same target.
+- **`main` = published state.** Only touched by release merges and tags — never commit features directly to `main`.
+- **Release flow:** merge `dev` → `main` with `--no-ff`, bump `versionCode` (monotonic integer) and `versionName` (semver-ish `X.Y.Z`) in `app/build.gradle.kts`, create annotated tag `vX.Y.Z` on `main`. F-Droid builds reference these tags, so tag the exact commit you publish.
+
 ## Conventions for future work
 
 - When scaffolding new features, follow the Must-first story order in the spec and keep acceptance criteria testable; add unit/integration tests per story as implemented and list the suites here.
