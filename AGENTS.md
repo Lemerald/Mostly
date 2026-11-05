@@ -58,7 +58,7 @@ export JAVA_HOME=/path/to/full-jdk-17-21   # see quirk below
 - **Branch model:** `feature/<us-x-y-slug>` branches off **`dev`**; merge back with `git merge --no-ff`. `fix/<slug>` for bugfix branches, same target.
 - **`main` = published state.** Only touched by release merges and tags — never commit features directly to `main`.
 - **Release flow:** merge `dev` → `main` with `--no-ff`, bump `versionCode` (monotonic integer) and `versionName` (semver-ish `X.Y.Z`) in `app/build.gradle.kts`, create annotated tag `vX.Y.Z` on `main`. F-Droid builds reference these tags, so tag the exact commit you publish.
-- **CI:** `.github/workflows/ci.yml` builds the debug APK and runs `testDebugUnitTest` on every push/PR touching `dev`/`main`. It only activates once the repo is pushed to GitHub (owner `lemerald`); merge-gating then comes from GitHub branch protection ("required status checks") — a setting, not code. Before pushing (or on any remote), a local pre-push hook (`core.hooksPath` → `.githooks/`) runs the unit tests; bypass with `--no-verify`.
+- **CI:** `.github/workflows/ci.yml` builds the debug APK and runs `testDebugUnitTest` on every push/PR touching `dev`/`main`. Repo live at `github.com/Lemerald/Mostly` (pushed 2026-11-05); merge-gating comes from GitHub branch protection ("required status checks", check name `build-and-test`) — a setting, not code. A local pre-push hook (`core.hooksPath` → `.githooks/`) runs the unit tests before every push; bypass with `--no-verify`.
 
 ## Feature process (decided 2026-11-05)
 
