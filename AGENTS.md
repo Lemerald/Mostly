@@ -47,6 +47,12 @@ export JAVA_HOME=/path/to/full-jdk-17-21   # see quirk below
 - `material-icons-extended` was added because core Compose icons are missing many symbols (`Event`, `Checklist`, `ViewWeek`); it inflates the debug APK (~16 MB) — R8-in release builds prunes unused icons.
 - Gradle wrapper distribution 8.10.2 + AGP 8.7.3 + Kotlin 2.0.21 + compileSdk/targetSdk 35, minSdk 26 (chosen for notification channels + Compose support; documented as decision #2 in the spec).
 
+## License & distribution (decided 2026-11-05)
+
+- **`GPL-3.0-or-later`** (`LICENSE` file at repo root). F-Droid metadata license field will be `GPL-3.0-or-later`.
+- Implications the user accepted: modified forks may be sold for profit (must stay GPL + carry source); unaltered copies may also be sold — no FOSS license can prevent that. Enforcement lever for the *brand*: the "Mostly" name/logo stay trademark-custodied by the user, so forks must rebrand. Commercial dual-licensing inquiries go to the user as sole copyright holder.
+- Copyright header convention for new source files: short SPDX notice (`SPDX-License-Identifier: GPL-3.0-or-later`) in the file top comment of new `.kt` files.
+
 ## Git workflow (decided 2026-11-05)
 
 - **Branch model:** `feature/<us-x-y-slug>` branches off **`dev`**; merge back with `git merge --no-ff`. `fix/<slug>` for bugfix branches, same target.
