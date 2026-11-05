@@ -53,6 +53,10 @@ export JAVA_HOME=/path/to/full-jdk-17-21   # see quirk below
 - Implications the user accepted: modified forks may be sold for profit (must stay GPL + carry source); unaltered copies may also be sold — no FOSS license can prevent that. Enforcement lever for the *brand*: the "Mostly" name/logo stay trademark-custodied by the user, so forks must rebrand. Commercial dual-licensing inquiries go to the user as sole copyright holder.
 - Copyright header convention for new source files: short SPDX notice (`SPDX-License-Identifier: GPL-3.0-or-later`) in the file top comment of new `.kt` files.
 
+## Current next step (pointer for fresh sessions)
+
+- Infrastructure (scaffold, CI, git workflow, license) is done and verified. The next feature is the **E3 data model** — stories US-3.1 to US-3.3 (terms → courses → slots), to be built as `feature/us-3-1-to-3-3-terms-courses-slots` off `dev`, unit tests first per the Feature process below. UI stories (E1/E2) follow after the data model exists.
+
 ## Git workflow (decided 2026-11-05)
 
 - **Branch model:** `feature/<us-x-y-slug>` branches off **`dev`**; merge back with `git merge --no-ff`. `fix/<slug>` for bugfix branches, same target.
