@@ -1,0 +1,15 @@
+# Gradle
+.gradle/
+build/
+
+# IDE
+.idea/
+*.iml
+
+# Android Studio captures
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Machine-local SDK path conventionally not committed
+local.properties
